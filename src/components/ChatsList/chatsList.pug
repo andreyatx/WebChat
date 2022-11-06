@@ -3,9 +3,14 @@ aside.left-panel
     |!{profileLink}
   .search
     | Заглушка для поиска
+  .create-chat 
+    | !{createChatInput}
+    | !{createChat}
   if isLoaded 
     .chat-list
       each chat in chats
         |!{chat}
+      else 
+        | Чаты не найдены
   else 
     | L O A D I N G . . . 

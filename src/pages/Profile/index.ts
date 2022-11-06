@@ -1,12 +1,12 @@
 import Block from "../../utils/Block";
 import template from "./profile.pug";
 import { DataField } from "../../components/DataField";
+import { Button } from "../../components/Button";
 import { Link } from "../../components/Link";
 import store, { StoreEvents, withStore } from "../../utils/Store";
 import AuthController from "../../controllers/AuthController";
 import changeAvatar from "../../assets/img/changeAvatar.png";
 import "./styles.css";
-import { Button } from "../../components/button";
 
 interface ProfileProps {
   title: string;
@@ -28,31 +28,30 @@ export class ProfileBase extends Block {
   init() {
     const fields = [
       new DataField({
-        name: "Почта",
+        label: "Почта",
         value: this.props.email,
       }),
       new DataField({
-        name: "Логин",
+        label: "Логин",
         value: this.props.login,
       }),
       new DataField({
-        name: "Имя",
+        label: "Имя",
         value: this.props.first_name,
       }),
       new DataField({
-        name: "Фамилия",
+        label: "Фамилия",
         value: this.props.second_name,
       }),
       new DataField({
-        name: "Имя в чате",
+        label: "Имя в чате",
         value: this.props.display_name,
       }),
       new DataField({
-        name: "Телефон",
+        label: "Телефон",
         value: this.props.phone,
       }),
     ];
-    console.log(fields);
 
     this.children.fields = fields;
 

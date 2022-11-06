@@ -1,5 +1,6 @@
 .messenger 
     if selectedChat 
+        |!{deleteChat}
         .messenger__messages
             each message in messages 
                 |!{message}

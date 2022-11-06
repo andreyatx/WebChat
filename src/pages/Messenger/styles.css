@@ -1,5 +1,12 @@
+@import "../../main.css";
+
+.main {
+  background-color: var(--color-white);
+}
+
 .messenger-page {
   height: 100vh;
   display: flex;
   flex-flow: nowrap;
+  background-color: white;
 }

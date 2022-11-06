@@ -1,11 +1,13 @@
 import Block from "../../utils/Block";
 import template from "./messenger.pug";
 import { Message } from "../Message";
-import { Input } from "../Input/";
-import { Button } from "../button";
+import { Input } from "../Input";
+import { Button } from "../Button";
 import MessagesController, {
   Message as MessageInfo,
 } from "../../controllers/MessagesController";
+import ChatsController from "../../controllers/ChatsController";
+import { ChatInfo } from "../../api/ChatsAPI";
 import { withStore } from "../../utils/Store";
 import "./styles.css";
 
@@ -22,15 +24,25 @@ class MessengerBase extends Block<MessengerProps> {
   protected init() {
     this.children.messages = this.createMessages(this.props);
 
+    this.children.deleteChat = new Button({
+      label: "Удалить этот чат",
+      events: {
+        click: async () => {
+          const chatId = this.props.selectedChat;
+          await ChatsController.delete(chatId);
+        },
+      },
+    });
+
     this.children.input = new Input({
       type: "text",
-      placeholder: "Сообщение",
-      label: "message",
+      label: "Введите сообщение",
     });
 
     this.children.button = new Button({
       label: "Отправить",
       type: "button",
+      classes: "button",
       events: {
         click: () => {
           const input = this.children.input as Input;
@@ -53,8 +65,6 @@ class MessengerBase extends Block<MessengerProps> {
   }
 
   private createMessages(props: MessengerProps) {
-    console.log(props.messages);
-
     return props.messages.map((data) => {
       return new Message({ ...data, isMine: props.userId === data.user_id });
     });

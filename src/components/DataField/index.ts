@@ -7,7 +7,7 @@ interface DataFieldProps {
     click: () => void;
   };
   classes?: string;
-  name?: string;
+  label?: string;
   value?: string;
   fieldName?: Block;
   fieldValue?: Block;
@@ -20,7 +20,7 @@ export class DataField extends Block {
 
   render() {
     return this.compile(template, {
-      name: this.props.name,
+      label: this.props.label,
       value: this.props.value,
     });
   }

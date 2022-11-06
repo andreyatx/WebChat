@@ -10,9 +10,12 @@ class ChatsController {
   }
 
   async create(title: string) {
-    await this.api.create(title);
-
-    this.fetchChats();
+    try {
+      await this.api.create(title);
+      this.fetchChats();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async fetchChats() {

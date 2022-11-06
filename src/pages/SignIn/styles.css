@@ -1,36 +1,36 @@
 @import "../../main.css";
 
 .fields {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .actions {
-	flex-direction: column;
-	justify-content: center;
-	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
 
-	button {
-		padding: 12px;
-		background-color: var(--color-primary);
-		border: none;
-		outline: none;
-		color: white;
-		border-radius: 8px;
-		cursor: pointer;
-		transition: 0.2s ease-in-out;
+  button {
+    padding: 12px;
+    background-color: var(--color-primary);
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 16px;
 
-		margin-bottom: 16px;
+    &:hover {
+      background-color: #2e60dd;
+    }
 
-		&:hover {
-			background-color: #2e60dd;
-		}
+    a {
+      text-decoration: none;
+    }
+  }
 
-		a {
-			text-decoration: none;
-		}
-	}
-	.main-button a {
-		color: var(--color-white);
-	}
+  .main-button a {
+    color: var(--color-white);
+  }
 }

@@ -1,0 +1,16 @@
+.input-field
+	label(
+		class=`${className}`
+		for=id
+	).label=label
+	input(
+		type=type
+		class=`${className}`
+		name=id
+		id=id
+		value=valueInput
+		placeholder=placeholder
+		).input
+	span(
+		class=`${className}`
+	).error-message= errorMessage

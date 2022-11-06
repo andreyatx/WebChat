@@ -4,27 +4,10 @@ import { Chat } from "../Chat";
 import { withStore } from "../../utils/Store";
 import { ChatInfo } from "../../api/ChatsAPI";
 import ChatsController from "../../controllers/ChatsController";
-import MessagesController from "../../controllers/MessagesController";
 import { Link } from "../Link";
 import "./styles.css";
-
-const chats = [
-  {
-    id: 1,
-    title: "Chat 1",
-    unread_count: 2,
-  },
-  {
-    id: 1,
-    title: "Chat 2",
-    unread_count: 0,
-  },
-  {
-    id: 1,
-    title: "Chat 3",
-    unread_count: 0,
-  },
-];
+import { Button } from "../Button";
+import { Input } from "../Input";
 
 interface ChatsListProps {
   chats: ChatInfo[];
@@ -38,6 +21,24 @@ class ChatsListBase extends Block<ChatsListProps> {
 
   protected init() {
     this.children.chats = this.createChats(this.props);
+    this.children.createChatInput = new Input({
+      type: "text",
+      label: "Название чата",
+      className: "create-chat",
+    });
+    this.children.createChat = new Button({
+      classes: "button main-button",
+      label: "Создать чат",
+      events: {
+        click: async () => {
+          const data = (
+            document.querySelector(".create-chat .input") as HTMLInputElement
+          ).value;
+
+          await ChatsController.create(data);
+        },
+      },
+    });
     this.children.profileLink = new Link({
       to: "/profile",
       title: "Профиль >",

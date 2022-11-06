@@ -17,7 +17,6 @@ export class AuthController {
       await this.fetchUser();
 
       router.go("/profile");
-      console.log("12345");
     } catch (e: any) {
       console.error(e);
     }

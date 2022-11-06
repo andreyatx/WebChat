@@ -14,12 +14,12 @@ export class Error500 extends Block {
   init(): void {
     this.children.back = new Link({
       title: "Назад к чатам",
-      to: "/chat",
+      to: "/messenger",
       classes: "back",
     });
   }
 
   render() {
-    return this.compile(template, { ...this.props });
+    return this.compile(template, { title: "500" });
   }
 }

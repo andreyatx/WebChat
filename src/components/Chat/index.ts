@@ -7,7 +7,7 @@ import "./styles.css";
 interface ChatProps {
   id: number;
   title: string;
-  unread_count: number;
+  unreadCount: number;
   selectedChat: ChatInfo;
   events: {
     click: () => void;

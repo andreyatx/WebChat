@@ -7,9 +7,7 @@ export enum StoreEvents {
 }
 
 export class Store extends EventBus {
-  private state: any = {
-    user: { login: "Johndoe1", email: "johndoe@mail.com" },
-  };
+  private state: Record<string, any> = {};
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);

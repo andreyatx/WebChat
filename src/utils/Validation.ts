@@ -1,10 +1,5 @@
-export enum ValidationType {
-  Email = "email",
-  Name = "name",
-  Login = "login",
-  Password = "password",
-  Phone = "phone",
-}
+export type ValidationType = "email" | "name" | "login" | "password" | "phone";
+
 export enum ErrorMessages {
   Email_error = "Латиница, может включать цифры и спецсимволы вроде дефиса, обязательно должна быть @ и точка после нее, но перед точкой обязательно должны быть буквы",
   Name_error = "Латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)",
@@ -31,7 +26,6 @@ class Validator {
 
   login(value: string): boolean {
     const result = /(?!^\d+$)[A-Za-z0-9_]{3,20}/.test(value);
-    console.log(result);
 
     return result;
   }
@@ -53,20 +47,16 @@ class Validator {
 
   validate(type: ValidationType, value: string): boolean {
     switch (type) {
-      case ValidationType.Email:
+      case "email":
         return this.email(value);
-      case ValidationType.Login:
+      case "login":
         return this.login(value);
-      case ValidationType.Name:
+      case "name":
         return this.name(value);
-      case ValidationType.Password:
+      case "password":
         return this.password(value);
-      case ValidationType.Phone:
+      case "phone":
         return this.phone(value);
-      // default: {
-      //   const exhaustiveCheck: never = type;
-      //   throw new Error(`Значение не должно быть пустым: ${exhaustiveCheck}`);
-      // }
     }
   }
 }

@@ -1,0 +1,19 @@
+@import "../../main.css";
+
+.button {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: var(--color-white);
+  display: block;
+  padding: 12px 70px;
+  margin: auto;
+  margin-bottom: 14px;
+  border: none;
+  background: var(--color-primary);
+  border-radius: 8px;
+  cursor: pointer;
+}
