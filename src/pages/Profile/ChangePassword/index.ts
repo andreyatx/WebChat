@@ -23,7 +23,7 @@ export class ChangePassword extends Block {
         fieldValue: new Input({
           label: "",
           id: "oldPassword",
-          type: ValidationType.Password,
+          type: "password",
         }),
       }),
       new DataField({
@@ -32,7 +32,7 @@ export class ChangePassword extends Block {
         fieldValue: new Input({
           label: "",
           id: "newPassword",
-          type: ValidationType.Password,
+          type: "password",
         }),
       }),
       new DataField({
@@ -41,7 +41,7 @@ export class ChangePassword extends Block {
         fieldValue: new Input({
           label: "",
           id: "password-check",
-          type: ValidationType.Password,
+          type: "password",
         }),
       }),
     ];
