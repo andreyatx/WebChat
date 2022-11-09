@@ -12,7 +12,7 @@ import Router from "./utils/Router";
 import AuthController from "./controllers/AuthController";
 
 window.store = store;
-enum Routes {
+export enum Routes {
   Index = "/",
   Signin = "/sign-in",
   Register = "/registration",
