@@ -39,7 +39,9 @@ export class Input extends Block<InputProps> {
     const inputName = this.getName();
     const inputValue = this.getValue();
 
-    return inputName !== "" ? Validator.validate(inputName, inputValue) : true;
+    return inputName !== ""
+      ? Validator.validate(inputName as ValidationType, inputValue)
+      : true;
   }
 
   private validateOnBlur(): void {
@@ -69,14 +71,14 @@ export class Input extends Block<InputProps> {
   //   return ((this.element as HTMLInputElement).value = this.props.valueInput);
   // }
 
-  public getName() {
-    return this.element?.getAttribute("data-name");
+  public getName(): string {
+    return this.element?.getAttribute("data-name") as string;
   }
 
-  public getValue() {
+  public getValue(): string {
     const inputField = this.element;
 
-    return inputField?.querySelector(`input`)!.value;
+    return inputField?.querySelector(`input`)!.value as string;
   }
 
   render() {

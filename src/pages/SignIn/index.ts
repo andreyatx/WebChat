@@ -3,16 +3,11 @@ import template from "./sign-in.pug";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input/index";
 import { Link } from "../../components/Link";
-// import Validator, {
-//   ValidationType,
-//   ErrorMessages,
-// } from "../../utils/Validation";
-import {
-  isValid,
-  showMessage,
-  hideMessage,
-  formValidation,
+import Validator, {
+  ValidationType,
+  ErrorMessages,
 } from "../../utils/Validation";
+
 import { SigninData } from "../../api/AuthAPI";
 import AuthController from "../../controllers/AuthController";
 import "./styles.css";
@@ -35,23 +30,6 @@ export class SignIn extends Block {
       id: "login",
       type: "login",
       name: "login",
-      // errorMessage: ErrorMessages.Login_error,
-      // events: {
-      //   focusout: (event: any) => {
-      //     const currentField = this.children.login._element.children[2];
-      //     return validator(
-      //       currentField,
-      //       "login",
-      //       event.target!.value as HTMLInputElement
-      //     );
-      //   },
-      // },
-      events: {
-        focusout: (e) =>
-          !isValid(e.target.name, e.target.value)
-            ? showMessage(e.target)
-            : hideMessage(e.target),
-      },
     });
     this.children.password = new Input({
       className: "password",
