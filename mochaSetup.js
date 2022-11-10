@@ -16,3 +16,6 @@ require.extensions[".pug"] = function (module, filename) {
 	module.exports = Pug.compile(contents);
 };
 require.extensions[".svg"] = function () {};
+require.extensions[".css"] = function () {
+	module.exports = () => ({});
+};
