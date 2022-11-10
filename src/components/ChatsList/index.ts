@@ -74,4 +74,4 @@ class ChatsListBase extends Block<ChatsListProps> {
 
 const withChats = withStore((state) => ({ chats: [...(state.chats || [])] }));
 
-export const ChatsList = withChats(ChatsListBase);
+export const ChatsList = withChats(ChatsListBase as unknown as typeof Block);

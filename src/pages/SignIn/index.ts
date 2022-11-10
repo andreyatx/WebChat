@@ -1,68 +1,66 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.pug";
 import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Input/index";
 import { Link } from "../../components/Link";
-import Validator, {
-  ValidationType,
-  ErrorMessages,
+// import Validator, {
+//   ValidationType,
+//   ErrorMessages,
+// } from "../../utils/Validation";
+import {
+  isValid,
+  showMessage,
+  hideMessage,
+  formValidation,
 } from "../../utils/Validation";
 import { SigninData } from "../../api/AuthAPI";
 import AuthController from "../../controllers/AuthController";
 import "./styles.css";
 
-interface SignInProps {
-  title: string;
-  classes?: string[];
-  url?: string;
-  children?: {
-    fields: Block[];
-    actions: Block[];
-  };
-}
-
-const validator = (currentField: any, type: ValidationType, value: any) => {
-  currentField.style.display = Validator.validate(type, value)
-    ? "none"
-    : "block";
-};
+// const validator = (currentField: any, type: ValidationType, value: any) => {
+//   currentField.style.display = Validator.validate(type, value)
+//     ? "none"
+//     : "block";
+// };
 
 export class SignIn extends Block {
-  constructor(props: SignInProps) {
-    super(props);
+  constructor() {
+    super({});
   }
 
   protected init() {
-    const fields = [
-      new Input({
-        className: "login",
-        label: "Логин",
-        id: "login",
-        type: "login",
-        errorMessage: ErrorMessages.Login_error,
-        events: {
-          focusout: (event) => {
-            const currentField = this.children.fields[0]._element.children[2];
-            return validator(currentField, "login", event.target.value);
-          },
-        },
-      }),
-      new Input({
-        className: "password",
-        label: "Пароль",
-        type: "password",
-        id: "password",
-        errorMessage: ErrorMessages.Password_error,
-        events: {
-          focusout: (event: MouseEvent) => {
-            const currentField = this.children.fields[1]._element.children[2];
-            return validator(currentField, "password", event.target.value);
-          },
-        },
-      }),
-    ];
-    this.children.fields = fields;
-
+    this.children.login = new Input({
+      className: "login",
+      label: "Логин",
+      id: "login",
+      type: "login",
+      name: "login",
+      // errorMessage: ErrorMessages.Login_error,
+      // events: {
+      //   focusout: (event: any) => {
+      //     const currentField = this.children.login._element.children[2];
+      //     return validator(
+      //       currentField,
+      //       "login",
+      //       event.target!.value as HTMLInputElement
+      //     );
+      //   },
+      // },
+      events: {
+        focusout: (e) =>
+          !isValid(e.target.name, e.target.value)
+            ? showMessage(e.target)
+            : hideMessage(e.target),
+      },
+    });
+    this.children.password = new Input({
+      className: "password",
+      label: "Пароль",
+      type: "password",
+      id: "password",
+      name: "password",
+      // errorMessage: ErrorMessages.Password_error,
+    });
     const buttons = [
       new Button({
         label: "Войти",
@@ -80,17 +78,28 @@ export class SignIn extends Block {
     this.children.actions = buttons;
   }
   onSubmit() {
-    const values = Object.values(this.children.fields)
+    const values = Object.values(this.children)
       .filter((child) => child instanceof Input)
-      .map((child) => [
+      .map((child: any) => [
         child._element.childNodes[1].name,
         child._element.childNodes[1].value,
       ]);
 
     const data = Object.fromEntries(values);
-
     AuthController.signin(data as SigninData);
   }
+  // onSubmit() {
+  //   const values = Object.values(this.children)
+  //     .filter((child) => child instanceof Input)
+  //     .map((child) => [
+  //       (child as Input).getName(),
+  //       (child as Input).getValue(),
+  //     ]);
+
+  //   const data = Object.fromEntries(values);
+
+  //   AuthController.signin(data as SigninData);
+  // }
   render(): DocumentFragment {
     return this.compile(template, { title: "Вход" });
   }

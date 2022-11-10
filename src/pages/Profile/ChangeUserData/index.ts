@@ -123,4 +123,6 @@ export class ChangeUserDataBase extends Block {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const ChangeUserData = withUser(ChangeUserDataBase);
+export const ChangeUserData = withUser(
+  ChangeUserDataBase as unknown as typeof Block
+);
