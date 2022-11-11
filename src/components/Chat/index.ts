@@ -33,6 +33,4 @@ export const withSelectedChat = withStore((state) => ({
   ),
 }));
 
-console.log(withSelectedChat);
-
 export const Chat = withSelectedChat(ChatBase as unknown as typeof Block);

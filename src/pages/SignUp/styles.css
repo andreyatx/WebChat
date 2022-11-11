@@ -1,9 +1,5 @@
 @import "../../main.css";
 
 .main-button a {
-  color: var(--color-white);
-}
-
-.sign-in__link {
-  text-align: center;
+	color: var(--color-white);
 }

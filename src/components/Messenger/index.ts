@@ -7,7 +7,6 @@ import MessagesController, {
   Message as MessageInfo,
 } from "../../controllers/MessagesController";
 import ChatsController from "../../controllers/ChatsController";
-// import { ChatInfo } from "../../api/ChatsAPI";
 import { withStore } from "../../utils/Store";
 import "./styles.css";
 
@@ -48,7 +47,6 @@ class MessengerBase extends Block<MessengerProps> {
         click: () => {
           const input = this.children.input as Input;
           const message = input.getValue();
-          console.log("message: ", message);
 
           input.setValue("");
           MessagesController.sendMessage(this.props.selectedChat!, message);

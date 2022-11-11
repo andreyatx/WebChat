@@ -7,7 +7,8 @@
 		"build": "webpack",
 		"start": "npm run build && node ./server.js",
 		"lint": "eslint . --fix && stylelint src/**/*.css --fix",
-		"test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
+		"test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
+		"prepare": "husky install"
 	},
 	"repository": {
 		"type": "git",
@@ -33,7 +34,6 @@
 		"@typescript-eslint/eslint-plugin": "5.36.1",
 		"@typescript-eslint/parser": "5.36.1",
 		"chai": "^4.3.7",
-		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.1",
 		"eslint": "^8.25.0",
 		"eslint-config-xo": "^0.42.0",
@@ -66,6 +66,9 @@
 		"webpack-merge": "^5.8.0"
 	},
 	"dependencies": {
+		"-": "^0.0.1",
+		"D": "^1.0.0",
+		"husky": "^8.0.2",
 		"nanoid": "3.3.4"
 	}
 }
