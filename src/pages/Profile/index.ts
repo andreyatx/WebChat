@@ -50,38 +50,26 @@ export class ProfileBase extends Block {
       value: this.props.phone,
     });
 
-    this.children.actions = [
-      new Link({
-        title: "Изменить данные",
-        to: "/change-user-data",
-        classes: "change-data",
-      }),
-      new Link({
-        title: "Изменить пароль",
-        to: "/change-password",
-        classes: "change-password",
-      }),
-      new Button({
-        label: "Выйти",
-        classes: "logout text-danger",
-        events: {
-          click: () => {
-            AuthController.logout();
-          },
+    this.children.change_user_data = new Link({
+      title: "Изменить данные",
+      to: "/change-user-data",
+      classes: "change-data",
+    });
+    this.children.change_password = new Link({
+      title: "Изменить пароль",
+      to: "/change-password",
+      classes: "change-password",
+    });
+    this.children.logout = new Button({
+      label: "Выйти",
+      classes: "logout text-danger",
+      events: {
+        click: () => {
+          AuthController.logout();
         },
-      }),
-    ];
+      },
+    });
   }
-  // protected componentDidUpdate(
-  //   oldProps: ProfileProps,
-  //   newProps: ProfileProps
-  // ): boolean {
-  //   (this.children.fields as DataField[]).forEach((field, i) => {
-  //     field.setProps({ value: newProps[userFields[i]] });
-  //   });
-
-  //   return false;
-  // }
 
   render() {
     return this.compile(template, {

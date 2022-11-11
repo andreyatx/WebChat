@@ -37,14 +37,14 @@ export class SignUp extends Block {
       label: "Имя",
       id: "first_name",
       type: "name",
-      name: "first_name",
+      name: "name",
     });
     this.children.second_name = new Input({
       className: "field",
       label: "Фамилия",
       id: "second_name",
       type: "name",
-      name: "second_name",
+      name: "name",
     });
     this.children.phone = new Input({
       className: "field",
@@ -68,20 +68,17 @@ export class SignUp extends Block {
       name: "password",
     });
 
-    const buttons = [
-      new Button({
-        label: "Зарегистрироваться",
-        classes: "button main-button",
-        events: {
-          click: () => this.onSubmit(),
-        },
-      }),
-      new Link({
-        title: "Уже зарегистрированы?",
-        to: "/sign-in",
-      }),
-    ];
-    this.children.actions = buttons;
+    this.children.register_btn = new Button({
+      label: "Зарегистрироваться",
+      classes: "button main-button",
+      events: {
+        click: () => this.onSubmit(),
+      },
+    });
+    this.children.login_link = new Link({
+      title: "Уже зарегистрированы?",
+      to: "/sign-in",
+    });
   }
 
   onSubmit() {

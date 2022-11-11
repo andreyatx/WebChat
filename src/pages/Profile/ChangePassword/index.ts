@@ -15,66 +15,61 @@ export class ChangePassword extends Block {
   }
 
   init() {
-    const fields = [
-      new DataField({
+    this.children.old_password = new DataField({
+      label: "Старый пароль",
+      classes: "data",
+      fieldValue: new Input({
         label: "Старый пароль",
-        classes: "data",
-        fieldValue: new Input({
-          label: "Старый пароль",
-          id: "old-password",
-          type: "password",
-          name: "old-password",
-        }),
+        id: "old-password",
+        type: "password",
+        name: "old-password",
       }),
-      new DataField({
+    });
+    this.children.new_password = new DataField({
+      label: "Новый пароль",
+      classes: "data",
+      fieldValue: new Input({
         label: "Новый пароль",
-        classes: "data",
-        fieldValue: new Input({
-          label: "",
-          id: "new-assword",
-          type: "password",
-          name: "new-password",
-        }),
+        id: "new-assword",
+        type: "password",
+        name: "new-password",
       }),
-      new DataField({
+    });
+    this.children.check_password = new DataField({
+      label: "Повторите новый пароль",
+      classes: "data",
+      fieldValue: new Input({
         label: "Повторите новый пароль",
-        classes: "data",
-        fieldValue: new Input({
-          label: "",
-          id: "password-check",
-          type: "password",
-          name: "password-check",
-        }),
+        id: "password-check",
+        type: "password",
+        name: "password-check",
       }),
-    ];
-    this.children.fields = fields;
+    });
 
-    this.children.actions = [
-      new Button({
-        label: "Сохранить",
-        events: {
-          click: async () => {
-            const inputs = document.querySelectorAll(".input");
-            const data = Array.from(inputs).reduce((acc: any, input) => {
-              acc[input.id as keyof ChangePasswordData] = (
-                input as HTMLInputElement
-              ).value;
-              if ((input as HTMLInputElement).value === "") {
-                return { oldPassword: "", newPassword: "" };
-              }
-              return acc;
-            }, {} as Partial<ChangePasswordData>);
-            await UserController.changePassword(data as ChangePasswordData);
-            router.go("/profile");
-          },
+    this.children.save_btn = new Button({
+      label: "Сохранить",
+      events: {
+        click: async () => {
+          const inputs = document.querySelectorAll(".input");
+          const data = Array.from(inputs).reduce((acc: any, input) => {
+            acc[input.id as keyof ChangePasswordData] = (
+              input as HTMLInputElement
+            ).value;
+            if ((input as HTMLInputElement).value === "") {
+              return { oldPassword: "", newPassword: "" };
+            }
+            return acc;
+          }, {} as Partial<ChangePasswordData>);
+          await UserController.changePassword(data as ChangePasswordData);
+          router.go("/profile");
         },
-        classes: "button main-button",
-      }),
-      new Link({
-        title: "Отменить",
-        to: "/profile",
-      }),
-    ];
+      },
+      classes: "button main-button",
+    });
+    this.children.cancel = new Link({
+      title: "Отменить",
+      to: "/profile",
+    });
   }
 
   render() {

@@ -27,21 +27,18 @@ export class SignIn extends Block {
       id: "password",
       name: "password",
     });
-    const buttons = [
-      new Button({
-        label: "Войти",
-        classes: "button main-button",
-        events: {
-          click: () => this.onSubmit(),
-        },
-      }),
-      new Link({
-        title: "Нет аккаунта?",
-        to: "/registration",
-      }),
-    ];
 
-    this.children.actions = buttons;
+    this.children.login_btn = new Button({
+      label: "Войти",
+      classes: "button main-button",
+      events: {
+        click: () => this.onSubmit(),
+      },
+    });
+    this.children.register_link = new Link({
+      title: "Нет аккаунта?",
+      to: "/registration",
+    });
   }
   onSubmit() {
     const values = Object.values(this.children)
