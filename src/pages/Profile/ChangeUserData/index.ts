@@ -12,12 +12,6 @@ import { Link } from "../../../components/Link";
 
 interface ChangeUserDataProps {
   title: string;
-  classes?: string[];
-  url?: string;
-  children?: {
-    fields: Block[];
-    footer: Block[];
-  };
 }
 
 export class ChangeUserDataBase extends Block {
@@ -26,96 +20,94 @@ export class ChangeUserDataBase extends Block {
   }
 
   init() {
-    this.children.fields = [
-      new DataField({
-        label: "Почта",
-        classes: "data",
-        fieldValue: new Input({
-          id: "email",
-          type: "text",
-          valueInput: this.props.email,
-        }),
+    this.children.email = new DataField({
+      label: "Почта",
+      classes: "data",
+      fieldValue: new Input({
+        id: "email",
+        type: "text",
+        name: "email",
+        valueInput: this.props.email,
       }),
-      new DataField({
-        label: "Логин",
-        classes: "data",
-        fieldValue: new Input({
-          id: "login",
-          type: "text",
-          valueInput: this.props.login,
-        }),
+    });
+    this.children.login = new DataField({
+      label: "Логин",
+      classes: "data",
+      fieldValue: new Input({
+        id: "login",
+        type: "text",
+        name: "login",
+        valueInput: this.props.login,
       }),
-      new DataField({
-        label: "Имя",
-        classes: "data",
-        fieldValue: new Input({
-          id: "first_name",
-          type: "text",
-          valueInput: this.props.first_name,
-        }),
+    });
+    this.children.first_name = new DataField({
+      label: "Имя",
+      classes: "data",
+      fieldValue: new Input({
+        id: "first_name",
+        type: "text",
+        name: "first_name",
+        valueInput: this.props.first_name,
       }),
-      new DataField({
-        label: "Фамилия",
-        classes: "data",
-        fieldValue: new Input({
-          id: "second_name",
-          type: "text",
-          valueInput: this.props.second_name,
-        }),
+    });
+    this.children.second_name = new DataField({
+      label: "Фамилия",
+      classes: "data",
+      fieldValue: new Input({
+        id: "second_name",
+        type: "text",
+        name: "second_name",
+        valueInput: this.props.second_name,
       }),
-      new DataField({
-        label: "Имя в чате",
-        classes: "data",
-        fieldValue: new Input({
-          id: "display_name",
-          type: "text",
-          valueInput: this.props.display_name,
-        }),
+    });
+    this.children.display_name = new DataField({
+      label: "Имя в чате",
+      classes: "data",
+      fieldValue: new Input({
+        id: "display_name",
+        type: "text",
+        name: "display_name",
+        valueInput: this.props.display_name,
       }),
-      new DataField({
-        label: "Телефон",
-        classes: "data",
-        fieldValue: new Input({
-          id: "phone",
-          type: "text",
-          valueInput: this.props.phone,
-        }),
+    });
+    this.children.phone = new DataField({
+      label: "Телефон",
+      classes: "data",
+      fieldValue: new Input({
+        id: "phone",
+        type: "text",
+        name: "phone",
+        valueInput: this.props.phone,
       }),
-    ];
-
-    this.children.actions = [
-      new Button({
-        label: "Сохранить",
-        events: {
-          click: async () => {
-            const inputs = document.querySelectorAll(".input");
-            const data = Array.from(inputs).reduce((acc: any, input) => {
-              acc[input.id as keyof UserData] = (
-                input as HTMLInputElement
-              ).value;
-              if ((input as HTMLInputElement).value === "") {
-                return { login: null, password: null };
-              }
-              return acc;
-            }, {} as Partial<UserData>);
-            await UserController.user(data as UserData);
-            router.go("/profile");
-          },
+    });
+    this.children.save_btn = new Button({
+      label: "Сохранить",
+      events: {
+        click: async () => {
+          const inputs = document.querySelectorAll(".input");
+          const data = Array.from(inputs).reduce((acc: any, input) => {
+            acc[input.id as keyof UserData] = (input as HTMLInputElement).value;
+            if ((input as HTMLInputElement).value === "") {
+              return { login: null, password: null };
+            }
+            return acc;
+          }, {} as Partial<UserData>);
+          await UserController.user(data as UserData);
+          router.go("/profile");
         },
-        classes: "button main-button",
-      }),
-      new Link({
-        title: "Отменить",
-        to: "/profile",
-      }),
-    ];
+      },
+      classes: "button main-button",
+    });
+    this.children.cancel = new Link({
+      title: "Отменить",
+      to: "/profile",
+    });
   }
 
   render() {
     return this.compile(template, {
       title: "Изменить данные",
       ...this.props,
-      display_name: this.props.display_name,
       changeAvatar,
     });
   }
@@ -123,4 +115,6 @@ export class ChangeUserDataBase extends Block {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const ChangeUserData = withUser(ChangeUserDataBase);
+export const ChangeUserData = withUser(
+  ChangeUserDataBase as unknown as typeof Block
+);

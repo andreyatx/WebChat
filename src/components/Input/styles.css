@@ -37,10 +37,13 @@
 }
 
 .error-message {
-  display: none;
   font-weight: 400;
   font-size: 10px;
   line-height: 10px;
   color: var(--color-red);
   padding-block: 7px;
+}
+
+.invalid > input {
+  box-shadow: inset 0 0 0 2px var(--color-red);
 }

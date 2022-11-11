@@ -7,23 +7,23 @@
   padding: 10px 30px;
 }
 
-.messenger__messages {
+.messenger-messages {
   display: flex;
   flex-direction: column;
 }
 
-.messenger__footer {
+.messenger-footer {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
   margin-top: auto;
 }
 
-.messenger__footer input {
+.messenger-footer input {
   width: 100%;
   border-radius: 0;
 }
 
-.messenger__footer button {
+.messenger-footer button {
   margin-left: auto;
 }

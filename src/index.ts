@@ -6,13 +6,11 @@ import { Profile } from "./pages/Profile";
 import { ChangePassword } from "./pages/Profile/ChangePassword";
 import { ChangeUserData } from "./pages/Profile/ChangeUserData";
 import { MessengerPage } from "./pages/Messenger";
-import store from "./utils/Store";
 
 import Router from "./utils/Router";
 import AuthController from "./controllers/AuthController";
 
-window.store = store;
-enum Routes {
+export enum Routes {
   Index = "/",
   Signin = "/sign-in",
   Register = "/registration",

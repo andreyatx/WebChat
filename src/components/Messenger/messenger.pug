@@ -1,12 +1,12 @@
 .messenger 
     if selectedChat 
         |!{deleteChat}
-        .messenger__messages
+        .messenger-messages
             each message in messages 
                 |!{message}
             else
                 |Начните историю переписки!
-        .messenger__footer 
+        .messenger-footer 
             |!{input}
             |!{button}
     else 

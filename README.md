@@ -29,6 +29,7 @@ Student project using Pug and Postcss
 
 ## Live demo
 
+[Heroku](https://damp-cove-73577.herokuapp.com/)
 [Netlify](https://imaginative-cascaron-acd808.netlify.app/)
 
 ## Design

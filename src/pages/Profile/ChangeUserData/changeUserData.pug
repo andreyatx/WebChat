@@ -3,9 +3,14 @@
 		.heading 
 			.user-avatar 
 				img(src=changeAvatar, alt="change avatar")
-			.user-name= display_name
 			.title= title
 		.user-info 
-			| !{fields}
+			| !{email}
+			| !{login}
+			| !{first_name}
+			| !{second_name}
+			| !{display_name}
+			| !{phone}
 		.user-actions
-			| !{actions}
+			|	!{save_btn}
+			|	!{cancel}
