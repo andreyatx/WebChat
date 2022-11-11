@@ -67,10 +67,6 @@ export class Input extends Block<InputProps> {
     return ((inputField?.querySelector(`input`))!.value = value);
   }
 
-  // public setValue(value: string) {
-  //   return ((this.element as HTMLInputElement).value = this.props.valueInput);
-  // }
-
   public getName(): string {
     return this.element?.getAttribute("data-name") as string;
   }

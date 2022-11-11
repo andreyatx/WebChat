@@ -33,6 +33,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "email",
           type: "text",
+          name: "email",
           valueInput: this.props.email,
         }),
       }),
@@ -42,6 +43,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "login",
           type: "text",
+          name: "login",
           valueInput: this.props.login,
         }),
       }),
@@ -51,6 +53,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "first_name",
           type: "text",
+          name: "first_name",
           valueInput: this.props.first_name,
         }),
       }),
@@ -60,6 +63,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "second_name",
           type: "text",
+          name: "second_name",
           valueInput: this.props.second_name,
         }),
       }),
@@ -69,6 +73,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "display_name",
           type: "text",
+          name: "display_name",
           valueInput: this.props.display_name,
         }),
       }),
@@ -78,6 +83,7 @@ export class ChangeUserDataBase extends Block {
         fieldValue: new Input({
           id: "phone",
           type: "text",
+          name: "phone",
           valueInput: this.props.phone,
         }),
       }),

@@ -25,6 +25,7 @@ class ChatsListBase extends Block<ChatsListProps> {
       type: "text",
       label: "Название чата",
       className: "create-chat",
+      name: "create-chat",
     });
     this.children.createChat = new Button({
       classes: "button main-button",

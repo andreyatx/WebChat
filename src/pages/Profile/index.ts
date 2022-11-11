@@ -25,33 +25,6 @@ export class ProfileBase extends Block {
   }
 
   init() {
-    // const fields = [
-    //   new DataField({
-    //     label: "Почта",
-    //     value: this.props.email,
-    //   }),
-    //   new DataField({
-    //     label: "Логин",
-    //     value: this.props.login,
-    //   }),
-    //   new DataField({
-    //     label: "Имя",
-    //     value: this.props.first_name,
-    //   }),
-    //   new DataField({
-    //     label: "Фамилия",
-    //     value: this.props.second_name,
-    //   }),
-    //   new DataField({
-    //     label: "Имя в чате",
-    //     value: this.props.display_name,
-    //   }),
-    //   new DataField({
-    //     label: "Телефон",
-    //     value: this.props.phone,
-    //   }),
-    // ];
-
     this.children.email = new DataField({
       label: "Почта",
       value: this.props.email,

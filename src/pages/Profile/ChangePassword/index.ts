@@ -3,7 +3,6 @@ import template from "./changePassword.pug";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
 import { DataField } from "../../../components/DataField";
-import { ValidationType } from "../../../utils/Validation";
 import { Link } from "../../../components/Link";
 import { ChangePasswordData } from "../../../api/UserAPI";
 import router from "../../../utils/Router";
@@ -21,9 +20,10 @@ export class ChangePassword extends Block {
         label: "Старый пароль",
         classes: "data",
         fieldValue: new Input({
-          label: "",
-          id: "oldPassword",
+          label: "Старый пароль",
+          id: "old-password",
           type: "password",
+          name: "old-password",
         }),
       }),
       new DataField({
@@ -31,8 +31,9 @@ export class ChangePassword extends Block {
         classes: "data",
         fieldValue: new Input({
           label: "",
-          id: "newPassword",
+          id: "new-assword",
           type: "password",
+          name: "new-password",
         }),
       }),
       new DataField({
@@ -42,6 +43,7 @@ export class ChangePassword extends Block {
           label: "",
           id: "password-check",
           type: "password",
+          name: "password-check",
         }),
       }),
     ];

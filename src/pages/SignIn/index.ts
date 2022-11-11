@@ -3,20 +3,9 @@ import template from "./sign-in.pug";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input/index";
 import { Link } from "../../components/Link";
-import Validator, {
-  ValidationType,
-  ErrorMessages,
-} from "../../utils/Validation";
-
 import { SigninData } from "../../api/AuthAPI";
 import AuthController from "../../controllers/AuthController";
 import "./styles.css";
-
-// const validator = (currentField: any, type: ValidationType, value: any) => {
-//   currentField.style.display = Validator.validate(type, value)
-//     ? "none"
-//     : "block";
-// };
 
 export class SignIn extends Block {
   constructor() {
@@ -37,7 +26,6 @@ export class SignIn extends Block {
       type: "password",
       id: "password",
       name: "password",
-      // errorMessage: ErrorMessages.Password_error,
     });
     const buttons = [
       new Button({
@@ -66,18 +54,7 @@ export class SignIn extends Block {
     const data = Object.fromEntries(values);
     AuthController.signin(data as SigninData);
   }
-  // onSubmit() {
-  //   const values = Object.values(this.children)
-  //     .filter((child) => child instanceof Input)
-  //     .map((child) => [
-  //       (child as Input).getName(),
-  //       (child as Input).getValue(),
-  //     ]);
 
-  //   const data = Object.fromEntries(values);
-
-  //   AuthController.signin(data as SigninData);
-  // }
   render(): DocumentFragment {
     return this.compile(template, { title: "Вход" });
   }
