@@ -1,9 +1,9 @@
 .main
   .card.sign-in
     h1.title= title
-    .fields
+    form(onSubmit=onSubmit).fields  
       | !{login}
       | !{password}
-    .actions
       | !{login_btn}
+    .actions
       | !{register_link}

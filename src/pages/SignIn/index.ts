@@ -10,6 +10,7 @@ import "./styles.css";
 export class SignIn extends Block {
   constructor() {
     super({});
+    console.log(this);
   }
 
   protected init() {
@@ -31,16 +32,17 @@ export class SignIn extends Block {
     this.children.login_btn = new Button({
       label: "Войти",
       classes: "button main-button",
-      events: {
-        click: () => this.onSubmit(),
-      },
+      type: "submit",
     });
     this.children.register_link = new Link({
       title: "Нет аккаунта?",
       to: "/registration",
     });
   }
-  onSubmit() {
+
+  onSubmit(e: any) {
+    e.preventDefault();
+    console.log("1234");
     const values = Object.values(this.children)
       .filter((child) => child instanceof Input)
       .map((child: any) => [
