@@ -60,6 +60,11 @@ export class ProfileBase extends Block {
       to: "/change-password",
       classes: "change-password",
     });
+    this.children.back_to_chats = new Link({
+      title: "Назад к чатам",
+      to: "/messenger",
+      classes: "back-to-chats",
+    });
     this.children.logout = new Button({
       label: "Выйти",
       classes: "logout text-danger",

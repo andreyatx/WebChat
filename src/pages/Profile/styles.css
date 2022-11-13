@@ -1,63 +1,64 @@
 @import "../../main.css";
 
 .main {
-  background-color: var(--color-white);
+	background-color: var(--color-white);
 }
 
 .profile {
-  display: flex;
-  flex-direction: column;
-  width: 510px;
+	display: flex;
+	flex-direction: column;
+	width: 510px;
 }
 
 .user-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background-color: var(--color-light-gray);
-  margin-inline: auto;
-  margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	background-color: var(--color-light-gray);
+	margin-inline: auto;
+	margin-bottom: 20px;
 
-  img {
-    width: 40px;
-    height: 40px;
-  }
+	img {
+		width: 40px;
+		height: 40px;
+	}
 }
 
 .user-name {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 16px;
-  margin-bottom: 30px;
-  text-align: center;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 16px;
+	margin-bottom: 30px;
+	text-align: center;
 }
 
 .user-info {
-  margin-bottom: 60px;
+	margin-bottom: 60px;
 }
 
 .user-actions {
-  text-align: left;
-  align-self: flex-start;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
+	text-align: left;
+	align-self: flex-start;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
 }
 
 .change-data,
-.change-password {
-  border-bottom: 1px var(--color-light-gray) solid;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  cursor: pointer;
-  text-align: left;
+.change-password,
+.back-to-chats {
+	border-bottom: 1px var(--color-light-gray) solid;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	cursor: pointer;
+	text-align: left;
 }
 
 .text-danger {
-  color: var(--color-red);
-  text-align: left;
+	color: var(--color-red);
+	text-align: left;
 }
