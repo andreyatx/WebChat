@@ -1,29 +1,30 @@
 @import "../../main.css";
 
 .messenger {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  padding: 10px 30px;
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	padding: 10px 30px;
 }
 
 .messenger-messages {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
 }
 
 .messenger-footer {
-  display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
-  margin-top: auto;
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+	margin-top: auto;
 }
 
 .messenger-footer input {
-  width: 100%;
-  border-radius: 0;
+	width: 100%;
+	border-radius: 0;
 }
 
 .messenger-footer button {
-  margin-left: auto;
+	margin-left: auto;
 }
