@@ -7,6 +7,7 @@ abstract class Block<P extends Record<string, any> = any> {
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render",
+    SUBMIT: "submit",
   } as const;
 
   public id = nanoid(6);
@@ -14,7 +15,6 @@ abstract class Block<P extends Record<string, any> = any> {
   public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   public _element: HTMLElement | null = null;
-  // public _element: any;
 
   /** JSDoc
    * @param {string} tagName

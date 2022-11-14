@@ -20,6 +20,7 @@ body {
   font-weight: 500;
   color: var(--color-text);
   background-color: var(--color-secondary);
+  overflow-x: hidden;
 }
 
 h1,
@@ -45,6 +46,11 @@ a:visited {
 
 ul {
   list-style-type: none;
+}
+
+button {
+  background: none;
+  border: none;
 }
 
 .main {

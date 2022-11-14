@@ -31,6 +31,7 @@ class MessengerBase extends Block<MessengerProps> {
           await ChatsController.delete(chatId!);
         },
       },
+      classes: "delete-button",
     });
 
     this.children.input = new Input({
@@ -42,7 +43,7 @@ class MessengerBase extends Block<MessengerProps> {
     this.children.button = new Button({
       label: "Отправить",
       type: "button",
-      classes: "button",
+      classes: "button main-button",
       events: {
         click: () => {
           const input = this.children.input as Input;

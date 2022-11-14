@@ -2,12 +2,27 @@
 
 .main {
   background-color: var(--color-white);
+  overflow-y: hidden;
+  padding: 10px;
 }
 
 .profile {
   display: flex;
   flex-direction: column;
   width: 510px;
+}
+
+.change-avatar {
+  color: black;
+  border: 1px solid black;
+
+  &:hover {
+    background-color: var(--color-primary);
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
 }
 
 .user-avatar {
@@ -35,10 +50,6 @@
   text-align: center;
 }
 
-.user-info {
-  margin-bottom: 60px;
-}
-
 .user-actions {
   text-align: left;
   align-self: flex-start;
@@ -49,7 +60,8 @@
 }
 
 .change-data,
-.change-password {
+.change-password,
+.back-to-chats {
   border-bottom: 1px var(--color-light-gray) solid;
   margin-bottom: 10px;
   padding-bottom: 20px;
@@ -57,7 +69,17 @@
   text-align: left;
 }
 
+.cancel {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .text-danger {
   color: var(--color-red);
   text-align: left;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

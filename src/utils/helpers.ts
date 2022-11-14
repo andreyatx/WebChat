@@ -44,3 +44,10 @@ export function set(
 
   return merge(object as Indexed, result);
 }
+
+export function getFormData(query: string) {
+  const form = document.querySelector(query) as HTMLFormElement;
+  const formData = new FormData(form);
+
+  return formData as unknown;
+}

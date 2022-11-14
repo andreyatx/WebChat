@@ -1,5 +1,11 @@
 @import "../../main.css";
 
+.left-panel {
+  background-color: var(--color-light-gray);
+  min-width: 310px;
+  padding-left: 10px;
+}
+
 .profile-link {
   text-align: right;
   color: var(--color-secondary);
@@ -10,12 +16,19 @@
   padding: 12px;
 }
 
-.search {
-  padding: 12px;
+.create-chat {
+  max-width: 280px;
+
+  .input-field {
+    margin-bottom: 4px;
+  }
+
+  &.input {
+    max-width: 260px;
+  }
 }
 
 .chats-list {
   width: 200px;
   height: 100%;
-  background: #eee;
 }

@@ -1,10 +1,7 @@
 import BaseAPI from "./BaseAPI";
 
-export interface FindUserData {
-  login: string;
-}
-
 export interface UserData {
+  avatar: string;
   first_name: string;
   second_name: string;
   display_name: string;

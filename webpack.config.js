@@ -1,11 +1,65 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
+
+const optimization = () => {
+  const config = {
+    splitChunks: {
+      chunks: 'all',
+    },
+  };
+
+  if (isProd) {
+    config.minimizer = [new TerserWebpackPlugin()];
+  }
+
+  return config;
+};
+
+const cssLoaders = extra => {
+  const loaders = [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {},
+    },
+    'css-loader',
+  ];
+
+  if (extra) {
+    loaders.push(extra);
+  }
+
+  return loaders;
+};
+
 module.exports = {
+  context: path.resolve(__dirname, 'src'),
   mode: 'development',
+  entry: {
+    main: ['@babel/polyfill', './index.ts'],
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
   },
+  optimization: optimization(),
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: './index.html',
+      minify: {
+        collapseWhitespace: isProd,
+      },
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
@@ -15,17 +69,29 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'ts-loader',
+            loader: 'babel-loader',
             options: {
-              configFile: path.resolve(__dirname, 'tsconfig.json'),
+              presets: ['@babel/preset-env', '@babel/preset-typescript'],
             },
           },
         ],
         exclude: /(node_modules)/,
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: cssLoaders('postcss-loader'),
       },
       {
         test: /\.pug$/,
@@ -45,5 +111,4 @@ module.exports = {
     compress: true,
     port: 3000,
   },
-  plugins: [new HtmlWebpackPlugin({template: './src/index.html'})],
 };
