@@ -2,6 +2,7 @@ import Block from "../../../utils/Block";
 import template from "./changePassword.pug";
 import { Input } from "../../../components/Input";
 import { DataField } from "../../../components/DataField";
+import { withStore } from "../../../utils/Store";
 import { Link } from "../../../components/Link";
 import { ChangePasswordData } from "../../../api/UserAPI";
 import router from "../../../utils/Router";
@@ -10,9 +11,13 @@ import changeAvatar from "../../../assets/img/changeAvatar.png";
 import { Form } from "../../../components/Form";
 import { getFormData } from "../../../utils/helpers";
 
-export class ChangePassword extends Block {
-  constructor() {
-    super({});
+interface ChangeUserPasswordProps {
+  title: string;
+}
+
+export class ChangePasswordBase extends Block {
+  constructor(props: ChangeUserPasswordProps) {
+    super(props);
   }
 
   init() {
@@ -67,6 +72,15 @@ export class ChangePassword extends Block {
   }
 
   render() {
-    return this.compile(template, { title: "Изменить пароль", changeAvatar });
+    return this.compile(template, {
+      title: "Изменить пароль",
+      changeAvatar,
+      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+    });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+export const ChangePassword = withUser(
+  ChangePasswordBase as unknown as typeof Block
+);

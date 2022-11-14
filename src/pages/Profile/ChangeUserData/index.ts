@@ -20,6 +20,16 @@ export class ChangeUserDataBase extends Block {
   }
 
   init() {
+    const avatar = new DataField({
+      label: "Аватар",
+      classes: "data",
+      fieldValue: new Input({
+        id: "avatar",
+        type: "file",
+        name: "avatar",
+        valueInput: this.props.avatar,
+      }),
+    });
     const email = new DataField({
       label: "Почта",
       classes: "data",
@@ -84,7 +94,15 @@ export class ChangeUserDataBase extends Block {
 
     this.children.form = new Form({
       label: "Изменить данные",
-      inputs: [email, login, first_name, second_name, display_name, phone],
+      inputs: [
+        avatar,
+        email,
+        login,
+        first_name,
+        second_name,
+        display_name,
+        phone,
+      ],
       onsubmit: this.onSubmit,
     });
 
@@ -104,6 +122,7 @@ export class ChangeUserDataBase extends Block {
     return this.compile(template, {
       title: "Изменить данные",
       ...this.props,
+      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
       changeAvatar,
     });
   }

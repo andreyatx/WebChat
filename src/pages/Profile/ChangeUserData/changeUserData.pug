@@ -2,7 +2,12 @@
 	.profile
 		.heading 
 			.user-avatar 
-				img(src=changeAvatar, alt="change avatar")
+				if avatar
+					img(src=avatar, alt="user avatar")
+				else
+					img(src=changeAvatar, alt="change avatar")
+			|!{choose_avatar}
+			|!{change_avatar}
 			.title= title
 		.user-info 
 			|!{form}

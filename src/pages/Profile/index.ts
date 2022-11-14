@@ -80,6 +80,7 @@ export class ProfileBase extends Block {
     return this.compile(template, {
       title: this.props.first_name || "Anon",
       props: this.props,
+      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
       changeAvatar,
     });
   }
