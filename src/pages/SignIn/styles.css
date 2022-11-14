@@ -29,8 +29,4 @@
       text-decoration: none;
     }
   }
-
-  .main-button a {
-    color: var(--color-white);
-  }
 }

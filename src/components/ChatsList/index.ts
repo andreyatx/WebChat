@@ -23,7 +23,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     this.children.chats = this.createChats(this.props);
     this.children.createChatInput = new Input({
       type: "text",
-      label: "Название чата",
+      label: "Создать чат(введите название)",
       className: "create-chat",
       name: "create-chat",
     });

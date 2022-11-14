@@ -1,6 +1,21 @@
 @import "../../main.css";
 
+.delete-button {
+  margin-top: 0;
+  color: black;
+  border: black 1px solid;
+
+  &:hover {
+    background-color: var(--color-red);
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
+}
+
 .messenger {
+  background-color: #f7f7f7;
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
@@ -10,7 +25,7 @@
 .messenger-messages {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .messenger-footer {

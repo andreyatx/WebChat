@@ -27,7 +27,7 @@ export class Form extends Block<FormProps> {
           this.props.onsubmit();
         },
       },
-      classes: "button",
+      classes: "button main-button",
     });
   }
 

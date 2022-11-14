@@ -4,8 +4,8 @@
   font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 13px;
-  line-height: 13px;
+  font-size: 16px;
+  line-height: 16px;
   text-align: center;
   color: var(--color-white);
   display: block;
@@ -13,7 +13,19 @@
   margin: auto;
   margin-bottom: 14px;
   border: none;
-  background: var(--color-primary);
   border-radius: 8px;
   cursor: pointer;
+}
+
+.main-button {
+  color: var(--color-white);
+  background: var(--color-primary);
+
+  &:hover {
+    box-shadow: 0 5px #666;
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
 }

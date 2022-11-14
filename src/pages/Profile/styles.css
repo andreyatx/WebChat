@@ -35,10 +35,6 @@
   text-align: center;
 }
 
-.user-info {
-  margin-bottom: 60px;
-}
-
 .user-actions {
   text-align: left;
   align-self: flex-start;
@@ -61,4 +57,8 @@
 .text-danger {
   color: var(--color-red);
   text-align: left;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
