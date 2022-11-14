@@ -4,7 +4,7 @@
 	"description": "web chat student project",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
-		"build": "cross-env NODE_ENV=production webpack --mode production",
+		"build": "cross-env NODE_ENV=production webpack --mode production --legacy-peer-deps",
 		"start": "npm run build && node ./server.js",
 		"lint": "eslint . --fix && stylelint src/**/*.css --fix",
 		"test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
