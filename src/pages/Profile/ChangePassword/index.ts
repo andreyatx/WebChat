@@ -1,6 +1,5 @@
 import Block from "../../../utils/Block";
 import template from "./changePassword.pug";
-import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
 import { DataField } from "../../../components/DataField";
 import { Link } from "../../../components/Link";
@@ -8,6 +7,8 @@ import { ChangePasswordData } from "../../../api/UserAPI";
 import router from "../../../utils/Router";
 import UserController from "../../../controllers/UserController";
 import changeAvatar from "../../../assets/img/changeAvatar.png";
+import { Form } from "../../../components/Form";
+import { getFormData } from "../../../utils/helpers";
 
 export class ChangePassword extends Block {
   constructor() {
@@ -15,61 +16,54 @@ export class ChangePassword extends Block {
   }
 
   init() {
-    this.children.old_password = new DataField({
+    const old_password = new DataField({
       label: "Старый пароль",
       classes: "data",
       fieldValue: new Input({
         label: "Старый пароль",
         id: "old-password",
         type: "password",
-        name: "old-password",
+        name: "password",
       }),
     });
-    this.children.new_password = new DataField({
+    const new_password = new DataField({
       label: "Новый пароль",
       classes: "data",
       fieldValue: new Input({
         label: "Новый пароль",
         id: "new-assword",
         type: "password",
-        name: "new-password",
+        name: "password",
       }),
     });
-    this.children.check_password = new DataField({
+    const check_password = new DataField({
       label: "Повторите новый пароль",
       classes: "data",
       fieldValue: new Input({
         label: "Повторите новый пароль",
         id: "password-check",
         type: "password",
-        name: "password-check",
+        name: "password",
       }),
     });
 
-    this.children.save_btn = new Button({
-      label: "Сохранить",
-      events: {
-        click: async () => {
-          const inputs = document.querySelectorAll(".input");
-          const data = Array.from(inputs).reduce((acc: any, input) => {
-            acc[input.id as keyof ChangePasswordData] = (
-              input as HTMLInputElement
-            ).value;
-            if ((input as HTMLInputElement).value === "") {
-              return { oldPassword: "", newPassword: "" };
-            }
-            return acc;
-          }, {} as Partial<ChangePasswordData>);
-          await UserController.changePassword(data as ChangePasswordData);
-          router.go("/profile");
-        },
-      },
-      classes: "button main-button",
+    this.children.form = new Form({
+      label: "Изменить пароль",
+      inputs: [old_password, new_password, check_password],
+      onsubmit: this.onSubmit,
     });
+
     this.children.cancel = new Link({
       title: "Отменить",
       to: "/profile",
     });
+  }
+  async onSubmit() {
+    const formData = getFormData("form") as FormData;
+    const data = Object.fromEntries(formData.entries()) as unknown;
+
+    await UserController.changePassword(data as ChangePasswordData);
+    router.go("/profile");
   }
 
   render() {

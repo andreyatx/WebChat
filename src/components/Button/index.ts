@@ -5,7 +5,7 @@ import "./styles.css";
 interface ButtonProps {
   label: string;
   events?: {
-    click: () => void;
+    click: (event: any) => void;
   };
   classes?: string;
   type?: "button" | "submit";

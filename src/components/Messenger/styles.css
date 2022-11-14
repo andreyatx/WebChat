@@ -1,42 +1,42 @@
 @import "../../main.css";
 
 .messenger {
-	display: flex;
-	flex-flow: column nowrap;
-	width: 100%;
-	padding: 10px 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  padding: 10px 30px;
 }
 
 .messenger-messages {
-	display: flex;
-	flex-direction: column;
-	overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 .messenger-footer {
-	display: grid;
-	flex-flow: row nowrap;
-	grid-template-columns: 1fr auto;
-	column-gap: 32px;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-top: auto;
-	padding: 16px;
+  display: grid;
+  flex-flow: row nowrap;
+  grid-template-columns: 1fr auto;
+  column-gap: 32px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding: 16px;
 }
 
 .messenger-footer input {
-	width: 100%;
-	border-radius: 8px;
-	max-width: 100%;
+  width: 100%;
+  border-radius: 8px;
+  max-width: 100%;
 }
 
 .messenger-footer .input-field {
-	margin-bottom: 0;
-	width: 90%;
+  margin-bottom: 0;
+  width: 90%;
 }
 
 .messenger-footer button {
-	margin-left: auto;
-	margin-right: 20px;
+  margin-left: auto;
+  margin-right: 20px;
 }
